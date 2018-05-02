@@ -9,7 +9,7 @@ class Steps:
     def generate(self, json: 'json'):
         '''Searches json and prints step by step directions for the route to the location(s)'''
         routed = []
-        print('\nDIRECTIONS')
+        print('\nSTEPS')
         for item in json:
           for element in item["route"]["legs"]:
             for subitem in element["maneuvers"]:
