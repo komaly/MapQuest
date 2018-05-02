@@ -8,12 +8,14 @@ import json
 class Steps:
     def generate(self, json: 'json'):
         '''Searches json and prints step by step directions for the route to the location(s)'''
-        print('DIRECTIONS')
+        routed = []
+        print('\nDIRECTIONS')
         for item in json:
           for element in item["route"]["legs"]:
             for subitem in element["maneuvers"]:
-              print(subitem["narrative"]);
-        print()
+                if subitem["narrative"] not in routed:
+                    print(subitem["narrative"])
+                    routed.append(subitem["narrative"])
 
 class TotalDistance:
     def generate(self, json:'json'):
@@ -21,8 +23,8 @@ class TotalDistance:
         distance = 0
         for element in json:
             distance += element["route"]["distance"]
-        print ("Total Distance: ", round(distance), 'miles')
-        print()
+        print("\nTOTAL DISTANCE: ")
+        print(round(distance), 'miles')
 
 class TotalTime:
     def generate(self, json:'json'):
@@ -30,7 +32,9 @@ class TotalTime:
         time = 0
         for element in json:
             time += element["route"]["time"]/60
-        print("Total Time: ", round(time), 'minutes')
+            
+        print("\nTOTAL TIME: ")
+        print(round(time), 'minutes')
         print()
 
 class LatLong:
@@ -53,9 +57,10 @@ class LatLong:
                           lat_long.append(str(abs(round(lat, 2))) + " S " + str(abs(round(long, 2))) + " E")
                       elif long < 0:
                           lat_long.append(str(abs(round(lat, 2))) + " S " + str(abs(round(long, 2))) + " W")
+        
+        print("\nLATLONG: ")
         for item in list(set(lat_long)):
                 print(item)
-        print()
             
         
             
