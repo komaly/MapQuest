@@ -46,17 +46,17 @@ class LatLong:
           for item in json_text:
               if "displayLatLng" in item:
                   lat = item["displayLatLng"]["lat"]
-                  long = item["displayLatLng"]["lng"]
+                  lon = item["displayLatLng"]["lng"]
                   if lat >=0:
-                      if long >=0:
-                          lat_long.append(str(abs(round(lat, 2))) + " N " + str(abs(round(long, 2))) + " E")
-                      elif long < 0:
-                          lat_long.append(str(abs(round(lat, 2)))+ " N " + str(abs(round(long, 2)))+ " W")
+                      if lon >=0:
+                          lat_long.append(str(abs(round(lat, 2))) + " N " + str(abs(round(lon, 2))) + " E")
+                      elif lon < 0:
+                          lat_long.append(str(abs(round(lat, 2)))+ " N " + str(abs(round(lon, 2)))+ " W")
                   else:
-                      if long >= 0:
-                          lat_long.append(str(abs(round(lat, 2))) + " S " + str(abs(round(long, 2))) + " E")
-                      elif long < 0:
-                          lat_long.append(str(abs(round(lat, 2))) + " S " + str(abs(round(long, 2))) + " W")
+                      if lon >= 0:
+                          lat_long.append(str(abs(round(lat, 2))) + " S " + str(abs(round(lon, 2))) + " E")
+                      elif lon < 0:
+                          lat_long.append(str(abs(round(lat, 2))) + " S " + str(abs(round(lon, 2))) + " W")
         
         print("\nLATLONG: ")
         for item in list(set(lat_long)):
